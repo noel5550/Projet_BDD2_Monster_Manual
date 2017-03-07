@@ -3,7 +3,7 @@
 DROP TABLE Competences CASCADE CONSTRAINT;
 --Creation de la table
 CREATE TABLE Competences (
-nom VARCHAR2(50),
+idMob number REFERENCES Caracteristique(idMob),
 competence VARCHAR2(20),
 valCompetence number,
-PRIMARY KEY (nom, competence));
+PRIMARY KEY (idMob, competence));
