@@ -2,9 +2,8 @@
 --Supprime la table pour pouvoir rappeler le script pour modifications
 DROP TABLE Race CASCADE CONSTRAINT;
 --Creation de la table
-CREATE TABLE Race (,
+CREATE TABLE Race (
 race VARCHAR2(20),
 habitat VARCHAR2 (20),
---type est déjà pris, à changer
-type_ VARCHAR2 (20),
+genre VARCHAR2 (20),
 PRIMARY KEY (race));

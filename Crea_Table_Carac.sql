@@ -2,7 +2,7 @@
 --Supprime la table pour pouvoir rappeler le script pour modifications
 DROP TABLE Caracteristique CASCADE CONSTRAINT;
 --Creation de la table
-CREATE TABLE Caracteristique (,
+CREATE TABLE Caracteristique (
 nom VARCHAR2(50),
 taille VARCHAR2(20) REFERENCES R4(taille),
 race VARCHAR2(20) REFERENCES R3(race),
