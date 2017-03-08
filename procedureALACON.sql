@@ -1,39 +1,5 @@
 --Combat de monstre parce que
-SET serveroutput ON;
---Fonction calculant les points de vie d un monstre
-CREATE OR REPLACE FUNCTION totPV(idM IN Caracteristique.idMob%TYPE)
-       RETURN number
-       IS
-       de Taille.dePV%TYPE;
-       vie number(4,0);
-       mob Caracteristique%ROWTYPE;
-       mob_inexistant_ERROR EXCEPTION;
-BEGIN
-	--Recherche du monstre suivant son id
-	SELECT * INTO mob
-	       FROM Caracteristique
-	       WHERE idMob=idM;
-	--On verifie que l id est dans la table
-	IF mob.idMob=null THEN
-	   RAISE mob_inexistant_ERROR;
-	END IF;
-	vie:=0;
-	--Recupere la valeur du de
-	SELECT dePV INTO de
-	       FROM Taille
-	       WHERE taille=mob.taille;
-	--Lancement des des
-	FOR i IN 1..mob.multiplePV LOOP
-	    vie := vie+DBMS_RANDOM.VALUE(1,de+1);
-	END LOOP;
-	--Retour des points de vues avec l ajout de la constante
-	RETURN vie + mob.constantePV;
-EXCEPTION
-	WHEN mob_inexistant_ERROR
-	THEN RAISE_APPLICATION_ERROR(-20001,'Le mob n existe pas');	
-END totPV;
-/
-SHOW ERROR;
+SET SERVEROUTPUT ON;
 --A tape sur B avec force hit et chance de second coup sndCP
 --B a vie point de vie et a chance d'esquive de esq
 CREATE OR REPLACE PROCEDURE coup_en_combat(hit IN number,
@@ -49,7 +15,7 @@ BEGIN
 	     vie:=vie - hit;
 	     DBMS_OUTPUT.put_line(nomB||' touche pour ' ||hit||' degat, il lui reste '||vie);
 	ELSE
-	     DBMS_OUTPUT.put_line(nomA||' a esquive');
+	     DBMS_OUTPUT.put_line(nomB||' a esquive');
 	END IF;
 	--Si A lance un second coup (non esquivable parce que)
 	IF DBMS_RANDOM.VALUE(1,100)>sndCP THEN
@@ -85,10 +51,10 @@ BEGIN
 	   RAISE mob_inexistant;
 	END IF;
 	--PV totaux du premier monstre
-	vieA := totPV(idA);
+	vieA := mobA.PV;
 	DBMS_OUTPUT.put_line('Vie '|| mobA.nom||' : '||vieA);
 	--PV totaux du second
-	vieB := totPV(idB);
+	vieB := mobB.PV;
 	DBMS_OUTPUT.put_line('Vie '|| mobB.nom||' : '||vieB);
 	--Debut combat
 	--A tape en premier

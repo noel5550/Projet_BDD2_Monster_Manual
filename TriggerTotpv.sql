@@ -14,10 +14,11 @@ BEGIN
 	       WHERE taille=:new.taille;
 	--Lancement des des
 	FOR i IN 1..:new.multiplePV LOOP
-	    vie := vie+DBMS_RANDOM.RANDOM(1,de+1);
+	    vie := vie+DBMS_RANDOM.VALUE(1,de+1);
 	END LOOP;
 	--Retour des points de vues avec l ajout de la constante
 	:new.PV:= vie + :new.constantePV;	
 END totPV;
 /
 SHOW ERROR;
+commit;
