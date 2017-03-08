@@ -1,6 +1,8 @@
 -- Script créant la vue Globale
 
+DROP VIEW Globale;
+
 CREATE VIEW Globale AS
-SELECT *
+SELECT nom, taille, race, habitat, genre, morale, ethique, aC, PV
 FROM Caracteristique NATURAL JOIN Taille NATURAL JOIN Race NATURAL JOIN XPChallenge
-WHERE vu = true;
+WHERE vu = 1;
