@@ -1,7 +1,7 @@
 SET SERVEROUTPUT ON;
 --Trigger mettant a jour l'attribut PV
 CREATE OR REPLACE TRIGGER totPV_bef_ins_cara
-       BEFORE INSERT ON Caracteristique
+       BEFORE INSERT OR UPDATE ON Caracteristique
        FOR EACH ROW
 DECLARE
 	vie Caracteristique.PV%Type;
