@@ -1,0 +1,32 @@
+-- Script créant la table Caracteristique correspondant à R6 sur l'UML
+
+-- Supprime la table et la séquence pour pouvoir rappeler le script pour modifications
+DROP TABLE Caracteristique CASCADE CONSTRAINT;
+DROP SEQUENCE seqIdMob;
+
+-- Creation de la table
+CREATE TABLE Caracteristique (
+	idMob NUMBER,
+	nom VARCHAR2(50) NOT NULL,
+	taille VARCHAR2(20) REFERENCES Taille(taille) NOT NULL,
+	race VARCHAR2(20) REFERENCES Race(race) NOT NULL,
+	morale VARCHAR2(20) NOT NULL,
+	ethique VARCHAR2(20) NOT NULL,
+	aC NUMBER NOT NULL,
+	multiplePV NUMBER NOT NULL,
+	constantePV NUMBER NOT NULL,
+	cR NUMBER REFERENCES XPChallenge(cR) NOT NULL,
+	attSTR NUMBER CONSTRAINT attSTRC CHECK(note BETWEEN 1 AND 30) NOT NULL,
+	attDEX NUMBER CONSTRAINT attDEXC CHECK(note BETWEEN 1 AND 30) NOT NULL,
+	attCON NUMBER CONSTRAINT attCONC CHECK(note BETWEEN 1 AND 30) NOT NULL,
+	attINT NUMBER CONSTRAINT attINTC CHECK(note BETWEEN 1 AND 30) NOT NULL,
+	attWIS NUMBER CONSTRAINT attWISC CHECK(note BETWEEN 1 AND 30) NOT NULL,
+	attCHA NUMBER CONSTRAINT attCHAC CHECK(note BETWEEN 1 AND 30) NOT NULL,
+	vu BOOLEAN NOT NULL,
+	PRIMARY KEY (idMob)
+);
+
+CREATE SEQUENCE seqIdMob
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0;
