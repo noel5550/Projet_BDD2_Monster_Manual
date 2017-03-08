@@ -1,6 +1,6 @@
 -- Script créant la vue Combat
 
-DROP VIEW Combat
+DROP VIEW Combat;
 
 CREATE VIEW Combat AS
 SELECT nom, taille, race, genre, aC, PV

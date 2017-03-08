@@ -12,3 +12,5 @@
 @Crea_View_Glob.sql
 @Crea_View_Soci.sql
 @Crea_View_Comb.sql
+
+@Crea_Role.sql
