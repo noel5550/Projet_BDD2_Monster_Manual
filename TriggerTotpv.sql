@@ -18,7 +18,7 @@ BEGIN
 	END LOOP;
 	--Retour des points de vues avec l ajout de la constante
 	:new.PV:= vie + :new.constantePV;	
-END totPV;
+END totPV_bef_ins_cara;
 /
 SHOW ERROR;
 commit;
