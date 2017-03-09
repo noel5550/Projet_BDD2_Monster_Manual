@@ -17,6 +17,8 @@
 @insertionRace.sql
 @insertionXPChal.sql
 
+@inserts_data.sql
+
 --Insertion des vues
 @Crea_View_Glob.sql
 @Crea_View_Soci.sql
