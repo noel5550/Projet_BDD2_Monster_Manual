@@ -14,9 +14,7 @@
 
 --Insertion des insertions...
 @insertionTaille.sql
-@insertionRace.sql
 @insertionXPChal.sql
-
 @inserts_data.sql
 
 --Insertion des vues
