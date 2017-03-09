@@ -31,3 +31,5 @@ CREATE SEQUENCE seqIdMob
 START WITH 0
 INCREMENT BY 1
 MINVALUE 0;
+
+CREATE INDEX ind_nom ON Caracteristique(nom);
